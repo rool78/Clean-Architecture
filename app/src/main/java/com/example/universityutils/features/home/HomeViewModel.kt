@@ -1,4 +1,4 @@
-package com.example.universityutils.ui.home
+package com.example.universityutils.features.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
