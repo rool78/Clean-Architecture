@@ -31,5 +31,9 @@
         android:id="@+id/navigation_edit_notes"
         android:name="com.example.universityutils.features.notes.presentation.edit_note.EditNoteFragment"
         android:label="@string/title_edit_notes"
-        tools:layout="@layout/fragment_edit_notes" />
+        tools:layout="@layout/fragment_edit_notes" >
+        <action
+            android:id="@+id/action_navigation_edit_notes_to_navigation_notes"
+            app:destination="@id/navigation_notes" />
+    </fragment>
 </navigation>

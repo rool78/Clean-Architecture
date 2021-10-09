@@ -1,17 +1,17 @@
 package com.example.universityutils.features.notes.data.repository
 
+import com.example.universityutils.features.notes.data.source.NotesDao
 import com.example.universityutils.features.notes.domain.model.Note
 import com.example.universityutils.features.notes.domain.repository.NotesRepository
+import javax.inject.Inject
 
-class NotesRepositoryImpl() : NotesRepository {
+class NotesRepositoryImpl @Inject constructor(private var dao: NotesDao) : NotesRepository {
 
-    //Dao
-
-    override fun getAllNotes(): List<Note> {
-        TODO("Not yet implemented")
+    override suspend fun getAllNotes(): List<Note> {
+        return dao.getAll()
     }
 
-    override fun insertNote(note: Note) {
-        TODO("Not yet implemented")
+    override suspend fun insertNote(note: Note) {
+        dao.insert(note)
     }
 }

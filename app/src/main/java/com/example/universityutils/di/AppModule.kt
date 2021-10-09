@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.example.universityutils.features.notes.data.repository.NotesRepositoryImpl
 import com.example.universityutils.features.notes.data.source.NotesDao
 import com.example.universityutils.features.notes.data.source.NotesDatabase
+import com.example.universityutils.features.notes.domain.repository.NotesRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -32,5 +33,11 @@ object AppModule {
     fun provideNotesDao(notesDatabase: NotesDatabase) : NotesDao {
         return notesDatabase.notesDao
     }
+
+//    @Provides
+//    @Singleton
+//    fun provideNotesRepository(notesDao: NotesDao) : NotesRepository {
+//        return
+//    }
 
 }

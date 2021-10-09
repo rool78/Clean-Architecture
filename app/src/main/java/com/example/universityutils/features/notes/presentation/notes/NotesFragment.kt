@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.universityutils.R
 import com.example.universityutils.databinding.FragmentNotesBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import dagger.hilt.android.scopes.FragmentScoped
 
 class NotesFragment : Fragment() {
 
@@ -27,8 +28,7 @@ class NotesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        notesViewModel =
-            ViewModelProvider(this).get(NotesViewModel::class.java)
+        notesViewModel = ViewModelProvider(this).get(NotesViewModel::class.java)
 
         _binding = FragmentNotesBinding.inflate(inflater, container, false)
         val root: View = binding.root

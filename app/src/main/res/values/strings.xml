@@ -5,4 +5,6 @@
     <string name="title_notes">Notes</string>
     <string name="test">test</string>
     <string name="title_edit_notes">Edit note</string>
+    <string name="title">Title</string>
+    <string name="note_content">Note content</string>
 </resources>
