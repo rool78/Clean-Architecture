@@ -5,7 +5,7 @@ import com.example.universityutils.features.notes.domain.model.Note
 import com.example.universityutils.features.notes.domain.repository.NotesRepository
 import javax.inject.Inject
 
-class NotesRepositoryImpl @Inject constructor(private var dao: NotesDao) : NotesRepository {
+class NotesRepositoryImpl (private var dao: NotesDao) : NotesRepository {
 
     override suspend fun getAllNotes(): List<Note> {
         return dao.getAll()

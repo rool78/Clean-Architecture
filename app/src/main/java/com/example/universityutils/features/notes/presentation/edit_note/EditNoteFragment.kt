@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
@@ -35,12 +36,22 @@ class EditNoteFragment : Fragment() {
         _binding = FragmentEditNotesBinding.inflate(inflater, container, false)
 
         binding.button.setOnClickListener {
-            println("Button pressed ${binding.etText.text}")
-            editNoteViewModel
-                .addNote(Note(0, binding.etTitle.text.toString(), binding.etText.text.toString(),
-                    System.currentTimeMillis()))
-
-            editNoteViewModel.getNotes()
+            val (id, title, content, data) = getNoteContent()
+            when {
+                title.isEmpty() -> {
+                    println("title error")
+                    binding.etTitle.error = "Insert title"
+                }
+                content.isEmpty() -> {
+                    println("content error")
+                    binding.etText.error = "Insert text"
+                }
+                else -> {
+                    editNoteViewModel
+                        .addNote(Note(id, title, content, data))
+                    editNoteViewModel.getNotes()
+                }
+            }
         }
 
         //TODO gestion fab
@@ -50,8 +61,16 @@ class EditNoteFragment : Fragment() {
         return binding.root
     }
 
+    private fun getNoteContent(): Note = binding.let {
+        val title = it.etTitle.text.toString()
+        val content = it.etText.text.toString()
+        val date = System.currentTimeMillis()
+        return Note(0, title, content, date)
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 }
+

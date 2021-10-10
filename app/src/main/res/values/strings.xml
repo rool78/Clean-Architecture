@@ -5,6 +5,8 @@
     <string name="title_notes">Notes</string>
     <string name="test">test</string>
     <string name="title_edit_notes">Edit note</string>
-    <string name="title">Title</string>
+    <string name="title">Note title</string>
     <string name="note_content">Note content</string>
+    <string name="note_title">Note title</string>
+    <string name="save_note">Save note</string>
 </resources>

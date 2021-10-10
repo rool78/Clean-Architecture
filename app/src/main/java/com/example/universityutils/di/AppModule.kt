@@ -6,6 +6,9 @@ import com.example.universityutils.features.notes.data.repository.NotesRepositor
 import com.example.universityutils.features.notes.data.source.NotesDao
 import com.example.universityutils.features.notes.data.source.NotesDatabase
 import com.example.universityutils.features.notes.domain.repository.NotesRepository
+import com.example.universityutils.features.notes.domain.use_case.AddNote
+import com.example.universityutils.features.notes.domain.use_case.GetNotes
+import com.example.universityutils.features.notes.domain.use_case.NotesUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -34,10 +37,18 @@ object AppModule {
         return notesDatabase.notesDao
     }
 
-//    @Provides
-//    @Singleton
-//    fun provideNotesRepository(notesDao: NotesDao) : NotesRepository {
-//        return
-//    }
+    @Provides
+    @Singleton
+    fun provideNotesRepository(notesDao: NotesDao) : NotesRepository {
+        return NotesRepositoryImpl(notesDao)
+    }
+
+    @Provides
+    @Singleton
+    fun provideNotesUseCase(notesRepository: NotesRepository) : NotesUseCase {
+        return NotesUseCase(AddNote(notesRepository),
+                            GetNotes(notesRepository)
+        )
+    }
 
 }
