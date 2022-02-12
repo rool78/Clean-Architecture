@@ -11,10 +11,14 @@
         android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/title_dashboard" />
 
-<!--    TODO new icon-->
     <item
         android:id="@+id/navigation_notes"
         android:icon="@drawable/ic_notifications_black_24dp"
         android:title="@string/title_notes" />
+
+    <item
+        android:id="@+id/navigation_food"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="@string/title_food" />
 
 </menu>

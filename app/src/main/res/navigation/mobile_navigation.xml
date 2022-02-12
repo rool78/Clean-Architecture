@@ -36,4 +36,11 @@
             android:id="@+id/action_navigation_edit_notes_to_navigation_notes"
             app:destination="@id/navigation_notes" />
     </fragment>
+
+    <fragment
+        android:id="@+id/navigation_food"
+        android:name="com.example.universityutils.features.food.presentation.FoodFragment"
+        android:label="@string/title_food"
+        tools:layout="@layout/fragment_food" />
+
 </navigation>
