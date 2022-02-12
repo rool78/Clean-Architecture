@@ -14,4 +14,12 @@ class NotesRepositoryImpl (private var dao: NotesDao) : NotesRepository {
     override suspend fun insertNote(note: Note) {
         dao.insert(note)
     }
+
+    override suspend fun updateNote(note: Note) {
+        dao.update(note)
+    }
+
+    override suspend fun deleteNote(note: Note) {
+        dao.delete(note)
+    }
 }

@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.universityutils.R
 import com.example.universityutils.databinding.FragmentEditNotesBinding
 import com.example.universityutils.features.notes.domain.model.Note
@@ -49,14 +51,18 @@ class EditNoteFragment : Fragment() {
                 else -> {
                     editNoteViewModel
                         .addNote(Note(id, title, content, data))
-                    editNoteViewModel.getNotes()
                 }
             }
         }
 
         //TODO gestion fab
-        val fab = activity?.findViewById<FloatingActionButton>(R.id.floatingActionButton)
-
+        val fab = requireActivity().findViewById<FloatingActionButton>(R.id.floatingActionButton)
+        val res = context?.let { ContextCompat.getDrawable(it, R.drawable.ic_save) }
+        fab.setImageDrawable(res)
+        fab.setOnClickListener {
+            println("Save action")
+            findNavController().navigate(R.id.action_navigation_edit_notes_to_navigation_notes)
+        }
 
         return binding.root
     }

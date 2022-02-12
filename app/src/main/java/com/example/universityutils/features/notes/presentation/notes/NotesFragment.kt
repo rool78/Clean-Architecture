@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -57,6 +58,8 @@ class NotesFragment : Fragment() {
         notesViewModel.getNotes()
 
         val floatingActionButton = requireActivity().findViewById<FloatingActionButton>(R.id.floatingActionButton)
+        val res = context?.let { ContextCompat.getDrawable(it, R.drawable.ic_add) }
+        floatingActionButton.setImageDrawable(res)
         floatingActionButton.show()
         floatingActionButton.setOnClickListener {
             println("floating action button")
@@ -66,14 +69,8 @@ class NotesFragment : Fragment() {
         mRecyclerView = binding.rvMain
         mRecyclerView.setHasFixedSize(true)
         mRecyclerView.layoutManager = LinearLayoutManager(context)
-//        NoteRecyclerViewAdapter(notes)
-//
-//        mRecyclerView.adapter = mAdapter
-
         return root
     }
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()

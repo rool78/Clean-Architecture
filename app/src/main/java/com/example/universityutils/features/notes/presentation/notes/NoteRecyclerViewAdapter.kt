@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.universityutils.R
 import com.example.universityutils.features.notes.domain.model.Note
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textview.MaterialTextView
 
 class NoteRecyclerViewAdapter(
@@ -53,16 +54,20 @@ class NoteRecyclerViewAdapter(
 
         fun bind(note: Note, context: Context) {
             println("viewHolder bind -> $note")
-            itemView.findViewById<MaterialTextView>(R.id.title_note_value).text = note.title
-            itemView.findViewById<MaterialTextView>(R.id.body_note_value).text = note.text
+            itemView.findViewById<MaterialCardView>(R.id.note_card).setOnClickListener {
+                println("view Note")
+            }
+            itemView.findViewById<MaterialTextView>(R.id.title_note).text = note.title
+            itemView.findViewById<MaterialTextView>(R.id.content_note).text = note.text
+
             //TODO date
-            itemView.findViewById<MaterialButton>(R.id.remove_post_button).setOnClickListener {
+//            itemView.findViewById<MaterialButton>(R.id.remove_post_button).setOnClickListener {
 //                removePost(note)
-                Toast.makeText(context, "Removing note", Toast.LENGTH_SHORT).show()
-            }
-            itemView.findViewById<MaterialButton>(R.id.edit_note_button).setOnClickListener {
-                Toast.makeText(context, "Edit note", Toast.LENGTH_SHORT).show()
-            }
+//                Toast.makeText(context, "Removing note", Toast.LENGTH_SHORT).show()
+//            }
+//            itemView.findViewById<MaterialButton>(R.id.edit_note_button).setOnClickListener {
+//                Toast.makeText(context, "Edit note", Toast.LENGTH_SHORT).show()
+//            }
         }
     }
 }

@@ -16,18 +16,10 @@ class EditNoteViewModel @Inject constructor(private var notesUseCase: NotesUseCa
 
 //    private val _noteTitle = mutableStateOf()
 
-    //View model se deberia encargar de crear la nota, no hacerlo en la view
+    //???? View model se deberia encargar de crear la nota, no hacerlo en la view
     fun addNote(note: Note) {
         viewModelScope.launch {
             notesUseCase.addNote(note)
-        }
-    }
-
-    fun getNotes()   {
-        var notes : List<Note>
-        viewModelScope.launch {
-            notes = notesUseCase.getNotes.invoke()
-            notes.forEach { println("$it") }
         }
     }
 
