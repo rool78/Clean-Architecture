@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -28,14 +29,10 @@ class FoodFragment: Fragment() {
         foodViewModel = ViewModelProvider(this).get(FoodViewModel::class.java)
         _binding = FragmentFoodBinding.inflate(inflater, container, false)
         val root : View = binding.root
+        binding.btSearch.setOnClickListener {
+            foodViewModel.searchFood(binding.etSearch.text.toString())
+        }
 
-        val textView : TextView = binding.textFood
-
-        foodViewModel.text.observe(viewLifecycleOwner, {
-            textView.text = it
-        })
-        print("Cuidao!")
-        foodViewModel.searchFood()
         return root
     }
 

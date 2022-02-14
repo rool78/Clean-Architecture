@@ -19,9 +19,9 @@ class FoodViewModel @Inject constructor(
     }
     val text: LiveData<String> = _text
 
-    fun searchFood() {
+    fun searchFood(query: String) {
         viewModelScope.launch {
-            searchUseCase("a")
+            searchUseCase(query)
         }
     }
 
