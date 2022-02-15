@@ -33,6 +33,11 @@ class FoodFragment: Fragment() {
             foodViewModel.searchFood(binding.etSearch.text.toString())
         }
 
+        foodViewModel.food.observe(viewLifecycleOwner, {
+            println("View has food now")
+            println(it)
+        })
+
         return root
     }
 

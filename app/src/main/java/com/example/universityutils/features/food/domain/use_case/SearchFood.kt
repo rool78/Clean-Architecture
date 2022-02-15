@@ -1,5 +1,6 @@
 package com.example.universityutils.features.food.domain.use_case
 
+import com.example.universityutils.features.food.domain.model.Food
 import com.example.universityutils.features.food.domain.repository.FoodRepository
 import javax.inject.Inject
 
@@ -9,10 +10,10 @@ class SearchFood @Inject constructor(private val repository: FoodRepository) {
         query: String,
         page: Int = 1,
         pageSize: Int = 40
-    ) {
+    ): Result<List<Food>> {
         if(query.isBlank()) {
             print("blank query")
         }
-        repository.search(query.trim(), page, pageSize)
+        return repository.search(query.trim(), page, pageSize)
     }
 }
