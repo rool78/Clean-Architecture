@@ -26,4 +26,10 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_food"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/bt_search"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

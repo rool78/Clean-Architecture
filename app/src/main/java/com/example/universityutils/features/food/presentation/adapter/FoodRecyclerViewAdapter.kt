@@ -1,37 +1,34 @@
-package com.example.universityutils.features.notes.presentation.notes
+package com.example.universityutils.features.food.presentation.adapter
 
 import android.content.Context
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.universityutils.R
-import com.example.universityutils.features.notes.domain.model.Note
+import com.example.universityutils.features.food.domain.model.Food
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textview.MaterialTextView
 
-class NoteRecyclerViewAdapter(
-    private val notes: MutableList<Note>,
+class FoodRecyclerViewAdapter(
+    private val foodList: MutableList<Food>,
     private val context: Context
 ) :
-    RecyclerView.Adapter<NoteRecyclerViewAdapter.CustomViewHolder>() {
+    RecyclerView.Adapter<FoodRecyclerViewAdapter.CustomViewHolder>() {
 
-    fun removeNote(note: Note) {
-        val index = notes.indexOf(note)
+    fun removeNote(food: Food) {
+        val index = foodList.indexOf(food)
         if (index != -1) {
-            notes.remove(note)
+            foodList.removeAt(index)
             notifyItemRemoved(index)
         }
     }
 
-    fun editNote() {
-        TODO("later")
-    }
-
-
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
-        println("onBindViewHolder: ${notes[position]}")
-        val item = notes[position]
+        println("onBindViewHolder: ${foodList[position]}")
+        val item = foodList[position]
         holder.bind(item, context)
     }
 
@@ -45,18 +42,20 @@ class NoteRecyclerViewAdapter(
         )
     }
 
-    override fun getItemCount(): Int = notes.size
-
+    override fun getItemCount(): Int = foodList.size
 
     inner class CustomViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        fun bind(note: Note, context: Context) {
-            println("viewHolder bind -> $note")
+        fun bind(food: Food, context: Context) {
+            println("viewHolder bind -> $food")
             itemView.findViewById<MaterialCardView>(R.id.note_card).setOnClickListener {
                 println("view Note")
             }
-            itemView.findViewById<MaterialTextView>(R.id.tv_food_name).text = note.title
-            itemView.findViewById<MaterialTextView>(R.id.tv_food_calories).text = note.text
+            if (food.imageUrl != null) {
+//                itemView.findViewById<Material>(R.id.food_image).setImageURI(Uri.parse(food.imageUrl))
+            }
+            itemView.findViewById<MaterialTextView>(R.id.tv_food_name).text = food.name
+            itemView.findViewById<MaterialTextView>(R.id.tv_food_calories).text = food.caloriesPer100g.toString()
 
             //TODO date
 //            itemView.findViewById<MaterialButton>(R.id.remove_post_button).setOnClickListener {

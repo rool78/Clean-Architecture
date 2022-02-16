@@ -9,8 +9,12 @@ import android.widget.SearchView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Delete
 import com.example.universityutils.databinding.FragmentFoodBinding
+import com.example.universityutils.features.food.presentation.adapter.FoodRecyclerViewAdapter
+import com.example.universityutils.features.notes.presentation.notes.NoteRecyclerViewAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,6 +24,8 @@ class FoodFragment: Fragment() {
     private var _binding : FragmentFoodBinding? = null
 
     private val binding get() = _binding!!
+
+    private lateinit var mRecyclerView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,10 +40,13 @@ class FoodFragment: Fragment() {
         }
 
         foodViewModel.food.observe(viewLifecycleOwner, {
-            println("View has food now")
-            println(it)
+            mRecyclerView.adapter = context?.let {
+                    it1 -> FoodRecyclerViewAdapter(it.toMutableList(), it1)
+            }
         })
-
+        mRecyclerView = binding.rvFood
+        mRecyclerView.setHasFixedSize(true)
+        mRecyclerView.layoutManager = LinearLayoutManager(context)
         return root
     }
 

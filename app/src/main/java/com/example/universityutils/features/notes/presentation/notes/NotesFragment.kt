@@ -25,7 +25,7 @@ class NotesFragment : Fragment() {
     private lateinit var notesViewModel: NotesViewModel
     private var _binding: FragmentNotesBinding? = null
 
-    private lateinit var mRecyclerView : RecyclerView
+    private lateinit var mRecyclerView: RecyclerView
 //    ......
     private var notes = mutableListOf<Note>()
 
