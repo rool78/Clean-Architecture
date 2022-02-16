@@ -10,4 +10,5 @@
     <string name="note_content">Note content</string>
     <string name="note_title">Note title</string>
     <string name="save_note">Save note</string>
+    <string name="food_image">Food image</string>
 </resources>

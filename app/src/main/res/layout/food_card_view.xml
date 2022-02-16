@@ -1,5 +1,5 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/note_card"
+    android:id="@+id/food_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp">
@@ -19,8 +19,8 @@
                 android:id="@+id/food_image"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:paddingLeft="20dp"
-                android:src="@drawable/ic_launcher_foreground" />
+                android:src="@drawable/ic_launcher_foreground"
+                android:contentDescription="@string/food_image" />
 
             <!-- Title, secondary and supporting text -->
             <TextView
