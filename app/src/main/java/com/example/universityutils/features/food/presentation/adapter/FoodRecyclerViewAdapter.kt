@@ -15,14 +15,12 @@ import com.squareup.picasso.Picasso
 
 class FoodRecyclerViewAdapter(
     private val foodList: MutableList<Food>,
-    private val context: Context
-) :
-    RecyclerView.Adapter<FoodRecyclerViewAdapter.CustomViewHolder>() {
+) : RecyclerView.Adapter<FoodRecyclerViewAdapter.CustomViewHolder>() {
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         println("onBindViewHolder: ${foodList[position]}")
         val item = foodList[position]
-        holder.bind(item, context)
+        holder.bind(item)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
@@ -39,7 +37,7 @@ class FoodRecyclerViewAdapter(
 
     inner class CustomViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        fun bind(food: Food, context: Context) {
+        fun bind(food: Food) {
             println("viewHolder bind -> $food")
             itemView.findViewById<MaterialCardView>(R.id.food_card).setOnClickListener {
                 println("#### food card clicked...$it")

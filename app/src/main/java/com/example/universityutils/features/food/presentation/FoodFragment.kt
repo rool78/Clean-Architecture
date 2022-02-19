@@ -40,9 +40,7 @@ class FoodFragment: Fragment() {
         }
 
         foodViewModel.food.observe(viewLifecycleOwner, {
-            mRecyclerView.adapter = context?.let {
-                    it1 -> FoodRecyclerViewAdapter(it.toMutableList(), it1)
-            }
+            mRecyclerView.adapter = FoodRecyclerViewAdapter(it.toMutableList())
         })
         mRecyclerView = binding.rvFood
         mRecyclerView.setHasFixedSize(true)
