@@ -62,7 +62,6 @@ class NotesFragment : Fragment() {
         floatingActionButton.setImageDrawable(res)
         floatingActionButton.show()
         floatingActionButton.setOnClickListener {
-            println("floating action button")
             findNavController().navigate(R.id.action_navigation_notes_to_navigation_edit_notes)
         }
 

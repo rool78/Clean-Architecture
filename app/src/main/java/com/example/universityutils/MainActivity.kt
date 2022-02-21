@@ -34,8 +34,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_food
             )
         )
-
-
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }

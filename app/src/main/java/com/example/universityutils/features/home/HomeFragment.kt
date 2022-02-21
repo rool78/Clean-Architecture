@@ -8,7 +8,9 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.universityutils.R
 import com.example.universityutils.databinding.FragmentHomeBinding
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class HomeFragment : Fragment() {
 
@@ -34,6 +36,8 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
+        val floatingActionButton = requireActivity().findViewById<FloatingActionButton>(R.id.floatingActionButton)
+        floatingActionButton?.hide()
         return root
     }
 

@@ -5,10 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.universityutils.R
 import com.example.universityutils.databinding.FragmentDashboardBinding
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class DashboardFragment : Fragment() {
 
@@ -34,6 +37,8 @@ class DashboardFragment : Fragment() {
         dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
+        val floatingActionButton = requireActivity().findViewById<FloatingActionButton>(R.id.floatingActionButton)
+        floatingActionButton.hide()
         return root
     }
 

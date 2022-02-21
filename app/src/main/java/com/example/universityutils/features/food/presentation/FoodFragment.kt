@@ -12,9 +12,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Delete
+import com.example.universityutils.R
 import com.example.universityutils.databinding.FragmentFoodBinding
 import com.example.universityutils.features.food.presentation.adapter.FoodRecyclerViewAdapter
 import com.example.universityutils.features.notes.presentation.notes.NoteRecyclerViewAdapter
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -38,7 +40,8 @@ class FoodFragment: Fragment() {
         binding.btSearch.setOnClickListener {
             foodViewModel.searchFood(binding.etSearch.text.toString())
         }
-
+        val floatingActionButton = requireActivity().findViewById<FloatingActionButton>(R.id.floatingActionButton)
+        floatingActionButton.hide()
         foodViewModel.food.observe(viewLifecycleOwner, {
             mRecyclerView.adapter = FoodRecyclerViewAdapter(it.toMutableList())
         })

@@ -60,7 +60,6 @@ class EditNoteFragment : Fragment() {
         val res = context?.let { ContextCompat.getDrawable(it, R.drawable.ic_save) }
         fab.setImageDrawable(res)
         fab.setOnClickListener {
-            println("Save action")
             findNavController().navigate(R.id.action_navigation_edit_notes_to_navigation_notes)
         }
 
