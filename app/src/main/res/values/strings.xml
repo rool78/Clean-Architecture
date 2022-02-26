@@ -11,4 +11,5 @@
     <string name="note_title">Note title</string>
     <string name="save_note">Save note</string>
     <string name="food_image">Food image</string>
+    <string name="current_progress">Progreso Actual</string>
 </resources>

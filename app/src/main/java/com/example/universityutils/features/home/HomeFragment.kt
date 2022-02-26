@@ -1,5 +1,6 @@
 package com.example.universityutils.features.home
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -38,6 +39,12 @@ class HomeFragment : Fragment() {
         })
         val floatingActionButton = requireActivity().findViewById<FloatingActionButton>(R.id.floatingActionButton)
         floatingActionButton?.hide()
+        val progressBar = binding.progressBar
+        progressBar.max = 40
+        ObjectAnimator.ofInt(progressBar, "progress", 36)
+            .setDuration(2000)
+            .start()
+
         return root
     }
 
