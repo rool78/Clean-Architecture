@@ -1,4 +1,4 @@
-package com.example.universityutils.features.home
+package com.example.universityutils.features.home.presentation
 
 import android.animation.ObjectAnimator
 import android.os.Bundle
@@ -12,7 +12,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.universityutils.R
 import com.example.universityutils.databinding.FragmentHomeBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
@@ -44,7 +46,8 @@ class HomeFragment : Fragment() {
         ObjectAnimator.ofInt(progressBar, "progress", 36)
             .setDuration(2000)
             .start()
-
+        println("#### GL")
+        homeViewModel.searchSubjects()
         return root
     }
 

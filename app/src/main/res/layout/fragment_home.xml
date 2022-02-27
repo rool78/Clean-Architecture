@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".features.home.HomeFragment">
+    tools:context=".features.home.presentation.HomeFragment">
 
     <TextView
         android:id="@+id/tv_current_progress"

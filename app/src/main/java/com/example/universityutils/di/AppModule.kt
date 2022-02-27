@@ -6,6 +6,10 @@ import com.example.universityutils.features.food.data.remote.OpenFoodApi
 import com.example.universityutils.features.food.data.repository.FoodRepositoryImpl
 import com.example.universityutils.features.food.domain.repository.FoodRepository
 import com.example.universityutils.features.food.domain.use_case.SearchFood
+import com.example.universityutils.features.home.data.SubjectsApi
+import com.example.universityutils.features.home.data.SubjectsRepositoryImpl
+import com.example.universityutils.features.home.domain.SubjectsRepository
+import com.example.universityutils.features.home.domain.use_case.SearchSubjects
 import com.example.universityutils.features.notes.data.repository.NotesRepositoryImpl
 import com.example.universityutils.features.notes.data.source.NotesDao
 import com.example.universityutils.features.notes.data.source.NotesDatabase
@@ -71,6 +75,33 @@ object AppModule {
         api: OpenFoodApi
     ): FoodRepository {
         return FoodRepositoryImpl(api)
+    }
+
+//  subjects
+
+    @Provides
+    @Singleton
+    fun provideSubjectsApi(client: OkHttpClient): SubjectsApi {
+        return Retrofit.Builder()
+            .baseUrl(SubjectsApi.BASE_URL)
+            .addConverterFactory(MoshiConverterFactory.create())
+            .client(client)
+            .build()
+            .create()
+    }
+
+    @Provides
+    @Singleton
+    fun provideSubjectsRepository(
+        api: SubjectsApi
+    ): SubjectsRepository {
+        return SubjectsRepositoryImpl(api)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSubjectUseCase(searchRepository: SubjectsRepository) : SearchSubjects {
+        return SearchSubjects(searchRepository)
     }
 
     @Provides

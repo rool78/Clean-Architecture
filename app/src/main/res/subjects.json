@@ -1,0 +1,74 @@
+{
+  "subjects": {
+    "0": {
+      "name": "FUNDAMENTOS FÍSICOS DE LA INFORMÁTICA",
+      "course": "1",
+      "semester": "1",
+      "type": "FORMACIÓN BÁSICA",
+      "credits": "6"
+    },
+    "1": {
+      "name": "FUNDAMENTOS MATEMÁTICOS DE LA INFORMÁTICA",
+      "course": "1",
+      "semester": "1",
+      "type": "FORMACIÓN BÁSICA",
+      "credits": "6"
+    },
+    "2": {
+      "name": "LED",
+      "course": "1",
+      "semester": "1",
+      "type": "FORMACIÓN BÁSICA",
+      "credits": "6"
+    },
+    "3": {
+      "name": "aa",
+      "course": "1",
+      "semester": "1",
+      "type": "FORMACIÓN BÁSICA",
+      "credits": "6"
+    },
+    "4": {
+      "name": "aaaa",
+      "course": "1",
+      "semester": "1",
+      "type": "FORMACIÓN BÁSICA",
+      "credits": "6"
+    },
+    "5": {
+      "name": "a",
+      "course": "1",
+      "semester": "2",
+      "type": "FORMACIÓN BÁSICA",
+      "credits": "6"
+    },
+    "6": {
+      "name": "aaaaaaaaaaaaaaaaaaa",
+      "course": "1",
+      "semester": "2",
+      "type": "FORMACIÓN BÁSICA",
+      "credits": "6"
+    },
+    "7": {
+      "name": "aaaaaaaaaaaaaaaaaaaaaaaa",
+      "course": "1",
+      "semester": "2",
+      "type": "FORMACIÓN BÁSICA",
+      "credits": "6"
+    },
+    "8": {
+      "name": "o",
+      "course": "1",
+      "semester": "2",
+      "type": "FORMACIÓN BÁSICA",
+      "credits": "6"
+    },
+    "9": {
+      "name": "que miras",
+      "course": "1",
+      "semester": "2",
+      "type": "FORMACIÓN BÁSICA",
+      "credits": "6"
+    }
+  }
+}
