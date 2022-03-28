@@ -32,8 +32,6 @@ class DashboardFragment : Fragment() {
 
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        val floatingActionButton = requireActivity().findViewById<FloatingActionButton>(R.id.floatingActionButton)
-        floatingActionButton.hide()
         return root
     }
 

@@ -29,8 +29,6 @@ class NotesFragment : Fragment() {
 //    ......
     private var notes = mutableListOf<Note>()
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -44,23 +42,20 @@ class NotesFragment : Fragment() {
         val root: View = binding.root
 
         val textView: TextView = binding.textNotes
-        notesViewModel.text.observe(viewLifecycleOwner, Observer {
+        notesViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
-        })
+        }
 
         //pasamos a recyclerview directamente el livedata
-        notesViewModel.notesModel.observe(viewLifecycleOwner, Observer {
+        notesViewModel.notesModel.observe(viewLifecycleOwner) {
             println("notes observer $it")
             notes = it.toMutableList()
             mRecyclerView.adapter = context?.let { it1 -> NoteRecyclerViewAdapter(notes, it1) }
-        })
+        }
 
         notesViewModel.getNotes()
 
-        val floatingActionButton = requireActivity().findViewById<FloatingActionButton>(R.id.floatingActionButton)
-        val res = context?.let { ContextCompat.getDrawable(it, R.drawable.ic_add) }
-        floatingActionButton.setImageDrawable(res)
-        floatingActionButton.show()
+        val floatingActionButton = binding.fabAddNote
         floatingActionButton.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_notes_to_navigation_edit_notes)
         }

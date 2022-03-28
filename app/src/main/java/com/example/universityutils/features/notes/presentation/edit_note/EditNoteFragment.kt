@@ -2,6 +2,7 @@ package com.example.universityutils.features.notes.presentation.edit_note
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
@@ -54,15 +55,6 @@ class EditNoteFragment : Fragment() {
                 }
             }
         }
-
-        //TODO gestion fab
-        val fab = requireActivity().findViewById<FloatingActionButton>(R.id.floatingActionButton)
-        val res = context?.let { ContextCompat.getDrawable(it, R.drawable.ic_save) }
-        fab.setImageDrawable(res)
-        fab.setOnClickListener {
-            findNavController().navigate(R.id.action_navigation_edit_notes_to_navigation_notes)
-        }
-
         return binding.root
     }
 
@@ -76,6 +68,15 @@ class EditNoteFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        println("???? item selected")
+        when (item.itemId) {
+            android.R.id.home -> findNavController()
+                .navigate(R.id.action_navigation_edit_notes_to_navigation_notes) //FIXME 
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
 

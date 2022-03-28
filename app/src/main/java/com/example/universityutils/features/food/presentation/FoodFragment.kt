@@ -40,8 +40,6 @@ class FoodFragment: Fragment() {
         binding.btSearch.setOnClickListener {
             foodViewModel.searchFood(binding.etSearch.text.toString())
         }
-        val floatingActionButton = requireActivity().findViewById<FloatingActionButton>(R.id.floatingActionButton)
-        floatingActionButton.hide()
         foodViewModel.food.observe(viewLifecycleOwner, {
             mRecyclerView.adapter = FoodRecyclerViewAdapter(it.toMutableList())
         })

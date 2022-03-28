@@ -39,8 +39,6 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
-        val floatingActionButton = requireActivity().findViewById<FloatingActionButton>(R.id.floatingActionButton)
-        floatingActionButton?.hide()
         val progressBar = binding.progressBar
         progressBar.max = 40
         ObjectAnimator.ofInt(progressBar, "progress", 36)
