@@ -1,4 +1,4 @@
-# Sample App using clean architecture
+# Sample App using Clean Architecture
 
 
 The idea of this repository is to practice Android Development following good practices such as Clean Architecture.
