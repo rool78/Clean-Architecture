@@ -5,9 +5,9 @@ import com.example.universityutils.features.notes.domain.model.Note
 import com.example.universityutils.features.notes.domain.repository.NotesRepository
 import javax.inject.Inject
 
-class AddNote @Inject constructor(private var notesRepository: NotesRepository) {
+class AddNote @Inject constructor(private val notesRepository: NotesRepository) {
 
-    suspend operator fun invoke(note : Note) {
+    suspend operator fun invoke(note: Note) {
         notesRepository.insertNote(note)
     }
 }

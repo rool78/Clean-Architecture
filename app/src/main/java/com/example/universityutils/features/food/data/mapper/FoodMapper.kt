@@ -1,13 +1,8 @@
-package com.example.universityutils.features.food.data.mapper
-
 import com.example.universityutils.features.food.domain.model.Food
-import com.plcoding.tracker_data.remote.dto.Product
+import com.example.universityutils.features.food.data.remote.dto.Product
 import kotlin.math.roundToInt
 
-//TODO use it when searching food
-class FoodMapper {
-
-    fun Product.toFood(): Food? {
+fun Product.toFood(): Food? {
         return Food(
             name = productName ?: return null,
             carbsPer100g = nutriments.carbohydrates100g.roundToInt(),
@@ -17,4 +12,3 @@ class FoodMapper {
             imageUrl = imageFrontThumbUrl
         )
     }
-}
