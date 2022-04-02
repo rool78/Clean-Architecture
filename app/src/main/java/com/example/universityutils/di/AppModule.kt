@@ -19,6 +19,7 @@ import com.example.universityutils.features.notes.domain.use_case.GetNotes
 import com.example.universityutils.features.notes.domain.use_case.NotesUseCase
 import dagger.Module
 import dagger.Provides
+import dagger.Reusable
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.scopes.ViewModelScoped
@@ -35,7 +36,6 @@ import javax.inject.Singleton
 object AppModule {
 
     @Provides
-    @Singleton
     fun provideNotesDatabase(@ApplicationContext applicationContext: Context): NotesDatabase {
         return Room.databaseBuilder(
             applicationContext,
@@ -47,7 +47,6 @@ object AppModule {
     }
 
     @Provides
-    @Singleton
     fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(
@@ -59,7 +58,6 @@ object AppModule {
     }
 
     @Provides
-    @Singleton
     fun provideOpenFoodApi(client: OkHttpClient): OpenFoodApi {
         return Retrofit.Builder()
             .baseUrl(OpenFoodApi.BASE_URL)
@@ -70,7 +68,6 @@ object AppModule {
     }
 
     @Provides
-    @Singleton
     fun provideFoodRepository(
         api: OpenFoodApi
     ): FoodRepository {
@@ -80,7 +77,6 @@ object AppModule {
 //  subjects
 
     @Provides
-    @Singleton
     fun provideSubjectsApi(client: OkHttpClient): SubjectsApi {
         return Retrofit.Builder()
             .baseUrl(SubjectsApi.BASE_URL)
@@ -91,7 +87,6 @@ object AppModule {
     }
 
     @Provides
-    @Singleton
     fun provideSubjectsRepository(
         api: SubjectsApi
     ): SubjectsRepository {
@@ -99,37 +94,30 @@ object AppModule {
     }
 
     @Provides
-    @Singleton
     fun provideSubjectUseCase(searchRepository: SubjectsRepository) : SearchSubjects {
         return SearchSubjects(searchRepository)
     }
 
     @Provides
-    @Singleton
     fun provideFoodUseCase(foodRepository: FoodRepository) : SearchFood {
         return SearchFood(foodRepository)
     }
 
     @Provides
-    @Singleton
     fun provideNotesDao(notesDatabase: NotesDatabase): NotesDao {
         return notesDatabase.notesDao
     }
 
     @Provides
-    @Singleton
     fun provideNotesRepository(notesDao: NotesDao): NotesRepository {
         return NotesRepositoryImpl(notesDao)
     }
 
     @Provides
-    @Singleton
     fun provideNotesUseCase(notesRepository: NotesRepository): NotesUseCase {
         return NotesUseCase(
             AddNote(notesRepository),
             GetNotes(notesRepository)
         )
     }
-
-
 }
