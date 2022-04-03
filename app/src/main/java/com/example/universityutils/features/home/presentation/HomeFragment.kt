@@ -1,11 +1,9 @@
 package com.example.universityutils.features.home.presentation
 
-import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
@@ -13,17 +11,13 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.universityutils.R
 import com.example.universityutils.databinding.FragmentHomeBinding
 import com.google.accompanist.appcompattheme.AppCompatTheme
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -59,13 +53,19 @@ class HomeFragment : Fragment() {
 
         binding.greeting.setContent {
             AppCompatTheme() { // or AppCompatTheme
-                Greeting()
+                HomeScreen()
             }
         }
     }
 
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     @Composable
-    private fun Greeting() {
+    private fun HomeScreen() {
         val state = homeViewModel.homeText
         Column {
             Text(
@@ -81,18 +81,13 @@ class HomeFragment : Fragment() {
                     .fillMaxWidth()
                     .padding(6.dp),
                 onClick = {
-                    println("#### on click")
+                    homeViewModel.getQuote()
                 }
             ) {
-                Text(text = "Press me")
+                Text(text = stringResource(R.string.press_me))
             }
         }
 
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
 }
