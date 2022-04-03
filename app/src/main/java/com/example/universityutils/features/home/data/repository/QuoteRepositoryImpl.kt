@@ -17,7 +17,7 @@ class QuoteRepositoryImpl: QuoteRepository {
     )
 
     override suspend fun getQuote(id: Int): Quote {
-        return quoteList[Random.nextInt(quoteList.indices)]
+        return quoteList[id]
     }
 
     override suspend fun getNumberOfQuotes(): Int {

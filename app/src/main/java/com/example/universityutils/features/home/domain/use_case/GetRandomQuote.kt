@@ -9,7 +9,7 @@ class GetRandomQuote @Inject constructor(private val quoteRepository: QuoteRepos
 
     suspend operator fun invoke(): Quote =
         quoteRepository.getQuote(
-            Random.nextInt(0, quoteRepository.getNumberOfQuotes() - 1)
+            Random.nextInt(0, quoteRepository.getNumberOfQuotes())
         )
 
 }
