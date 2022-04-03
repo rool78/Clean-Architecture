@@ -2,7 +2,7 @@ package com.example.universityutils.features.home.data.di
 
 import com.example.universityutils.features.home.data.SubjectsApi
 import com.example.universityutils.features.home.data.SubjectsRepositoryImpl
-import com.example.universityutils.features.home.domain.SubjectsRepository
+import com.example.universityutils.features.home.domain.repository.SubjectsRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

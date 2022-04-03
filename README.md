@@ -21,6 +21,7 @@ contains use cases, models and repository interfaces.
 ## Stack
 
 * Kotlin
+* Jetpack Compose
 * Clean Architecture
 * MVVM
 * LiveData

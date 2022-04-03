@@ -1,7 +1,7 @@
 package com.example.universityutils.features.home.data
 
 import com.example.universityutils.features.home.data.dto.SubjectDTO
-import com.example.universityutils.features.home.domain.SubjectsRepository
+import com.example.universityutils.features.home.domain.repository.SubjectsRepository
 import com.example.universityutils.features.home.domain.model.Subject
 import java.lang.Exception
 import javax.inject.Inject
