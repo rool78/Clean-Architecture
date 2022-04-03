@@ -5,13 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.universityutils.features.notes.domain.model.Note
-import com.example.universityutils.features.notes.domain.use_case.NotesUseCase
+import com.example.universityutils.features.notes.domain.use_case.GetNotes
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class NotesViewModel @Inject constructor(private var notesUseCase: NotesUseCase) : ViewModel() {
+class NotesViewModel @Inject constructor(private val getNotesUseCase: GetNotes) : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is notes Fragment"
@@ -21,7 +21,7 @@ class NotesViewModel @Inject constructor(private var notesUseCase: NotesUseCase)
 
     fun getNotes() {
         viewModelScope.launch {
-            val notes = notesUseCase.getNotes.invoke()
+            val notes = getNotesUseCase.invoke()
             notesModel.postValue(notes)
         }
 

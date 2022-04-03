@@ -12,7 +12,7 @@ class SearchFood @Inject constructor(private val repository: FoodRepository) {
         pageSize: Int = 40
     ): Result<List<Food>> {
         if(query.isBlank()) {
-            print("blank query")
+            println("blank query")
         }
         return repository.search(query.trim(), page, pageSize)
     }

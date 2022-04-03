@@ -38,10 +38,6 @@ class FoodRecyclerViewAdapter(
     inner class CustomViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         fun bind(food: Food) {
-            println("viewHolder bind -> $food")
-            itemView.findViewById<MaterialCardView>(R.id.food_card).setOnClickListener {
-                println("#### food card clicked...$it")
-            }
             val image = itemView.findViewById<ImageView>(R.id.food_image)
             Picasso.get().load(food.imageUrl).into(image)
             itemView.findViewById<MaterialTextView>(R.id.tv_food_name).text = food.name

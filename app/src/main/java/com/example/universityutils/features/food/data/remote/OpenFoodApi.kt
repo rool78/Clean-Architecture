@@ -1,6 +1,6 @@
 package com.example.universityutils.features.food.data.remote
 
-import com.plcoding.tracker_data.remote.dto.SearchDto
+import com.example.universityutils.features.food.data.remote.dto.SearchDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 

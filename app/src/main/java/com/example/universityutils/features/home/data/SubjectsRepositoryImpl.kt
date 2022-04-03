@@ -7,7 +7,7 @@ import java.lang.Exception
 import javax.inject.Inject
 
 class SubjectsRepositoryImpl @Inject constructor(
-    private var api: SubjectsApi): SubjectsRepository {
+    private val api: SubjectsApi): SubjectsRepository {
 
     override suspend fun getAllSubjects(): Result<List<Subject>> {
         return try {

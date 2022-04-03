@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FoodViewModel @Inject constructor(
-    private var searchUseCase: SearchFood
+    private val searchUseCase: SearchFood
 ) : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {

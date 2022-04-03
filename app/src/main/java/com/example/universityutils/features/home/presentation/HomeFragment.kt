@@ -20,8 +20,6 @@ class HomeFragment : Fragment() {
     private lateinit var homeViewModel: HomeViewModel
     private var _binding: FragmentHomeBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -39,12 +37,6 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
-        val progressBar = binding.progressBar
-        progressBar.max = 40
-        ObjectAnimator.ofInt(progressBar, "progress", 36)
-            .setDuration(2000)
-            .start()
-        println("#### GL")
         homeViewModel.searchSubjects()
         return root
     }
