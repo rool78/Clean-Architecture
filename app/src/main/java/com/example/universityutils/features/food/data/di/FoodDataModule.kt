@@ -1,6 +1,5 @@
 package com.example.universityutils.features.food.data.di
 
-import com.example.universityutils.App_HiltComponents
 import com.example.universityutils.features.food.data.remote.OpenFoodApi
 import com.example.universityutils.features.food.data.repository.FoodRepositoryImpl
 import com.example.universityutils.features.food.domain.repository.FoodRepository
@@ -33,5 +32,4 @@ object FoodDataModule {
     ): FoodRepository {
         return FoodRepositoryImpl(api)
     }
-
 }

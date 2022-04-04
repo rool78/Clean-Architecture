@@ -4,30 +4,29 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.core.content.ContextCompat
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.universityutils.R
 import com.example.universityutils.databinding.FragmentNotesBinding
-import com.example.universityutils.features.notes.domain.model.Note
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.example.universityutils.features.notes.presentation.components.NoteItem
+import com.google.accompanist.appcompattheme.AppCompatTheme
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.scopes.FragmentScoped
 
 @AndroidEntryPoint
 class NotesFragment : Fragment() {
 
     private lateinit var notesViewModel: NotesViewModel
     private var _binding: FragmentNotesBinding? = null
-
-    private lateinit var mRecyclerView: RecyclerView
-//    ......
-    private var notes = mutableListOf<Note>()
 
     private val binding get() = _binding!!
 
@@ -41,33 +40,46 @@ class NotesFragment : Fragment() {
         _binding = FragmentNotesBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textNotes
-        notesViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-
-        //pasamos a recyclerview directamente el livedata
-        notesViewModel.notesModel.observe(viewLifecycleOwner) {
-            println("notes observer $it")
-            notes = it.toMutableList()
-            mRecyclerView.adapter = context?.let { it1 -> NoteRecyclerViewAdapter(notes, it1) }
-        }
-
         notesViewModel.getNotes()
 
         val floatingActionButton = binding.fabAddNote
         floatingActionButton.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_notes_to_navigation_edit_notes)
         }
-
-        mRecyclerView = binding.rvMain
-        mRecyclerView.setHasFixedSize(true)
-        mRecyclerView.layoutManager = LinearLayoutManager(context)
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.lazyList.setContent {
+            AppCompatTheme {
+                NoteScreen()
+            }
+        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    @Composable
+    private fun NoteScreen() {
+        LazyColumn(modifier = Modifier.fillMaxSize()) {
+            items(notesViewModel.state.value.notes) { note ->
+                NoteItem(
+                    note = note,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable {
+                            println("#### note click")
+                        }
+                        .padding(6.dp),
+                    onDeleteClick = {
+                        println("#### delete click")
+                    }
+                )
+            }
+        }
     }
 }
