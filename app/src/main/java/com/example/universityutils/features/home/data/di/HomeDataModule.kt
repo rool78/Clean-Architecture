@@ -1,7 +1,7 @@
 package com.example.universityutils.features.home.data.di
 
 import com.example.universityutils.features.home.data.SubjectsApi
-import com.example.universityutils.features.home.data.SubjectsRepositoryImpl
+import com.example.universityutils.features.home.data.repository.SubjectsRepositoryImpl
 import com.example.universityutils.features.home.data.repository.QuoteRepositoryImpl
 import com.example.universityutils.features.home.domain.repository.QuoteRepository
 import com.example.universityutils.features.home.domain.repository.SubjectsRepository

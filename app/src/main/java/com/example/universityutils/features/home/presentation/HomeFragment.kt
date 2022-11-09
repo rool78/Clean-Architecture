@@ -38,21 +38,14 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        val root: View = binding.root
-
-//        val textView: TextView = binding.textHome
-//        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-//            textView.text = it
-//        })
-//        homeViewModel.searchSubjects()
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.greeting.setContent {
-            AppCompatTheme() { // or AppCompatTheme
+        binding.homeScreen.setContent {
+            AppCompatTheme { // or AppCompatTheme
                 HomeScreen()
             }
         }
@@ -87,7 +80,5 @@ class HomeFragment : Fragment() {
                 Text(text = stringResource(R.string.press_me))
             }
         }
-
     }
-
 }

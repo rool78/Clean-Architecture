@@ -1,5 +1,6 @@
-package com.example.universityutils.features.home.data
+package com.example.universityutils.features.home.data.repository
 
+import com.example.universityutils.features.home.data.SubjectsApi
 import com.example.universityutils.features.home.data.dto.SubjectDTO
 import com.example.universityutils.features.home.domain.repository.SubjectsRepository
 import com.example.universityutils.features.home.domain.model.Subject
@@ -7,7 +8,8 @@ import java.lang.Exception
 import javax.inject.Inject
 
 class SubjectsRepositoryImpl @Inject constructor(
-    private val api: SubjectsApi): SubjectsRepository {
+    private val api: SubjectsApi
+): SubjectsRepository {
 
     override suspend fun getAllSubjects(): Result<List<Subject>> {
         return try {
